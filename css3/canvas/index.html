@@ -5,27 +5,25 @@
 	<title>Document</title>
 	<style>
 		html,body {
-			font-size: 20px;
 			margin: 0;
 			padding: 0;
-			overflow: hidden;
+			
 		}
 		#main-box {
 			height: 100%;
 			width: 100%;
-			overflow: hidden;
 			display: flex;
 			flex-direction: column;
 		}
 		#main-box #head-box {
 			padding: 20px;
 			text-align: center;
-			width: 100%;
+			font-size: 20px;
 		}
 		#main-box #myCanvas {
+			flex: 1;
 			border: 2px dashed #d3d3d3;
 			cursor: crosshair;
-			flex: 1;
 		}
 	</style>
 </head>
@@ -43,8 +41,7 @@
       		const h = window.innerHeight || d.documentElement.clientHeight || d.body.clientHeight;
       		//const 
 			const canvas = document.getElementById('myCanvas');
-			canvas.style.width = w + 'px';
-			canvas.style.height = h + 'px';
+			
 			let { width, height } = window.getComputedStyle(canvas, null);
 			width = width.replace('px','');
 			height = height.replace('px','');
@@ -63,9 +60,9 @@
       		const h = window.innerHeight || d.documentElement.clientHeight || d.body.clientHeight;
 
 			const canvas = document.getElementById('myCanvas');
-			canvas.style.width = w + 'px';
-			canvas.style.height = h + 'px';
+			
 			let { width, height } = window.getComputedStyle(canvas, null);
+			console.log(width,height);
 			width = width.replace('px','');
 			height = height.replace('px','');
 			const context = canvas.getContext('2d');
