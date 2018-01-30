@@ -72,5 +72,7 @@ function Draw (canvas,config = {}) {
 	//上述left和top并非内置，他们分别表示距离画布左边和顶部的距离，主要用于将屏幕的坐标点转换为画布的坐标点，可以运用一下方法
 	//element.getBoundingClientRect();返回元素距离左，上，右，下的距离
 	const {left,top} = canvas.getBoundingClientRect();
+
+	
 	
 };
