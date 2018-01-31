@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="file" id="files" accept="image/jpeg,image/jpg,image/png,image/gif" style="display: block;">
+	<img src="" id="preview" alt="" style="min-width: 200px;max-width: 500px;">
+	<script>
+	var el = document.getElementById('files'),
+		img = document.getElementById('preview');
+	el.onchange = function(e) {
+		var files = e.target.files,
+			reader = new FileReader();
+			console.log(files);
+		if(files && files[0]) {
+			reader.onload = function(ev) {
+				img.src = ev.target.result;
+			};
+			reader.readAsDataURL(files[0]);
+		}
+	};
+	</script>
+</body>
+</html>
