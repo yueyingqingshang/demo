@@ -35,131 +35,15 @@
 		</div>
 		<canvas id="myCanvas"></canvas>
 	</div>
+	<script src="./canvas-draw.js"></script>
 	<script>
-		clearCtx = () => {
-			const w = window.innerWidth || d.documentElement.clientWidth || d.body.clientWidth;
-      		const h = window.innerHeight || d.documentElement.clientHeight || d.body.clientHeight;
-      		//const 
-			const canvas = document.getElementById('myCanvas');
-			
-			let { width, height } = window.getComputedStyle(canvas, null);
-			width = width.replace('px','');
-			height = height.replace('px','');
-			const context = canvas.getContext('2d');
-			canvas.width = width;
-			canvas.height = height;
-			context.clearRect(0,0,width,height);
-			context.lineWidth = 6;
-			context.strokeStyle = 'black';
-			context.lineCap = 'round';
-			context.lineJoin = 'round';
-		};
+		var draw;
 		window.onload = function() {
-			const d = document;
-			const w = window.innerWidth || d.documentElement.clientWidth || d.body.clientWidth;
-      		const h = window.innerHeight || d.documentElement.clientHeight || d.body.clientHeight;
-
 			const canvas = document.getElementById('myCanvas');
-			
-			let { width, height } = window.getComputedStyle(canvas, null);
-			console.log(width,height);
-			width = width.replace('px','');
-			height = height.replace('px','');
-			const context = canvas.getContext('2d');
-			canvas.width = width;
-			canvas.height = height;
-      		context.lineWidth = 6;
-			context.strokeStyle = 'black';
-			context.lineCap = 'round';
-			context.lineJoin = 'round';
-			//Object.assign(context, config);
-			const touchStart = (e)=> {
-				//定义起点
-			};
-			const touchMove = (e)=> {
-				//连点成线，并且填充颜色
-			};
-			//判断用户终端
-			const isMobile = /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i.test(navigator.userAgent);
-			//绑定事件
-			if(isMobile) {
-				canvas.addEventListener('touchstart',touchStart);
-				canvas.addEventListener('touchmove',touchMove);
-			} else {
-				canvas.addEventListener('mousedown',touchStart);
-				canvas.addEventListener('mousemove',touchMove);
-			};
-
-			//存储所画的点
-			const point = {};
-
-			//表示鼠标是否按下或者手指是否按下
-			let pressed = false;
-
-			//画点方法
-			const paint = (signal) => {
-				switch(signal) {
-					case 1: 
-						context.beginPath();
-						context.moveTo(point.x,point.y);
-					case 2: 
-						context.lineTo(point.x,point.y);
-						context.stroke();
-						break;
-				};
-			};
-
-			//记录当前划过的点
-			const create = signal => (e) => {
-
-				//阻止默认时间
-				e.preventDefault();
-
-				if(signal == 1) {
-					pressed = true;
-				};
-
-				if(signal === 1 || pressed) {
-					e = isMobile ? e.touches[0] : e;
-					point.x = e.clientX - left + 0.5;
-					point.y = e.clientY - top + 0.5;
-					paint(signal);
-				};
-				console.log(signal);
-			};
-
-			//上述left和top并非内置，他们分别表示距离画布左边和顶部的距离，主要用于将屏幕的坐标点转换为画布的坐标点，可以运用一下方法
-			//element.getBoundingClientRect();返回元素距离左，上，右，下的距离
-			const {left,top} = canvas.getBoundingClientRect();
-
-			const start = create(1);
-			const move  = create(2);
-
-			//使动画更顺畅，优化requestAnimationFrame()方法
-			const requestAnimationFrame = window.requestAnimationFrame;
-			const optimizedMove = requestAnimationFrame ? (e)=> {
-				requestAnimationFrame(() => {
-					move(e);
-				});
-			} : move;
-
-			if (isMobile) {
-			  	canvas.addEventListener('touchstart', start);
-			  	canvas.addEventListener('touchmove', optimizedMove);
-			} else {
-			  	canvas.addEventListener('mousedown', start);
-			  	canvas.addEventListener('mousemove', optimizedMove);
-			  	['mouseup', 'mouseleave'].forEach((event) => {
-			    canvas.addEventListener(event, () => {
-			      		pressed = false;
-			    	});
-			  	});
-			};
-
-			//清屏操作
-			const clearCtx = () => {
-				console.log(123);
-			};
+			draw = new Draw(canvas);
+		};
+		function clearCtx () {
+			draw.clear();
 		};
 	</script>
 </body>
