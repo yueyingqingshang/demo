@@ -128,7 +128,7 @@
 			var yLen = this.yLength * (j+1);
 			context.moveTo(this.padding,this.height - this.padding - yLen);
 			context.lineTo(this.padding - 5,this.height - this.padding - yLen);
-			context.fillText(y,this.padding - 20, this.height - this.padding - yLen + 5);
+			context.fillText(y,this.padding - 10, this.height - this.padding - yLen + 5);
 
 			context.beginPath();
 			context.moveTo(this.padding + 0.5,this.height - this.padding - yLen);
