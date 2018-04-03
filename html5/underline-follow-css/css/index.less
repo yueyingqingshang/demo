@@ -1,0 +1,37 @@
+html {
+	width: 100%;
+}
+.underlind-follow {
+	width: 60%;
+	margin: 0 auto;
+	ul {
+		text-align: center;
+		li {
+			display: inline-block;
+			margin-right: 10px;
+			padding: 5px 10px;
+			cursor: pointer;
+			position: relative;
+		}
+		li::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 100%;
+			width: 0;
+			height: 100%;
+			border-bottom: 2px solid #000;
+			transition: all .3s linear;
+		}
+		li:hover::before {
+			width: 100%;
+			left: 0;
+			top: 0;
+		}
+		li:hover ~ li::before {
+		    left: 0;
+		    right: 0;
+		}
+
+	}
+}
