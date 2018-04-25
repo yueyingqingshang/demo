@@ -1,0 +1,44 @@
+body {
+  position: relative;
+  align-items: center;
+  min-height: 100vh;
+  background: #76daff;
+}
+body:before,
+body:after {
+  position: absolute;
+  content: '';
+  min-width: 800px;
+  min-height: 795px;
+  left: 50%;
+  background: #fff;
+  animation-name: rotates;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+body:before {
+  bottom: 22%;
+  border-radius: 45%;
+  animation-duration: 10s;
+}
+body:after {
+  bottom: 20%;
+  border-radius: 47%;
+  opacity: .5;
+  animation-duration: 10s;
+}
+@keyframes rotates {
+  0% {
+    transform: translate(-50%, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, 2%) rotate(180deg);
+  }
+  100% {
+    transform: translate(-50%, 0) rotate(360deg);
+  }
+}
+h2 {
+  position: relative;
+  text-align: center;
+}

@@ -1,0 +1,30 @@
+section {
+  text-align: center;
+}
+section .btn-clip {
+  padding: 20px;
+}
+section .btn-clip button {
+  /*display: block;*/
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  background-image: -webkit-linear-gradient(90deg, #7e40ee 0, #63d9ee 100%);
+  background-image: -o-linear-gradient(90deg, #7e40ee 0, #63d9ee 100%);
+  background-image: linear-gradient(90deg, #7e40ee 0, #63d9ee 100%);
+  outline: none;
+  cursor: pointer;
+}
+section .span-clip {
+  color: transparent;
+}
+section .span-clip span {
+  display: inline-block;
+  font-size: 30px;
+  -webkit-background-clip: text;
+  background-image: -webkit-linear-gradient(left, #7e40ee 0%, #63d9ee 100%);
+  background-image: -o-linear-gradient(left, #7e40ee 0%, #63d9ee 100%);
+  background-image: linear-gradient(to right, #7e40ee 0%, #63d9ee 100%);
+}
